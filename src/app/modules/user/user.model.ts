@@ -3,6 +3,7 @@ import { IAuthProvider, isActive, IUser, Role } from "./user.interface";
 
 
 
+
 const authProviderSchema = new Schema<IAuthProvider>({
     provider:{
         type: String,
@@ -62,6 +63,16 @@ const userSchema = new Schema<IUser>({
         type: Boolean,
         default: false
     },
+     agents:{
+    type :String
+     },
+    agentApproved:{
+        type: Boolean,
+     },
+       createdAt: {
+        type: Date,
+        default: Date.now
+       },
     auths: [authProviderSchema],
   
 },{

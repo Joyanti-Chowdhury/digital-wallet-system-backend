@@ -1,6 +1,6 @@
 {
     "version": 2,
-    "name": "digital-wallet-management-system",
+    "name": "digital-wallet-system",
     "builds": [
         {
             "src": "dist/server.js",

@@ -1,7 +1,13 @@
-import mongoose, { Schema, Document } from 'mongoose';
+import  {  Document, Types } from 'mongoose';
 
 
+// export interface IWallet extends Document {
+//   userId: Types.ObjectId;
+//   balance: number;
+// }
 export interface IWallet extends Document {
-  userId: mongoose.Types.ObjectId;
-  balance: number;
+  owner?: Types.ObjectId; // references User
+  balance: number;       // store as integer paise? here we use float for simplicity
+  blocked?: boolean;
+  createdAt?: Date;
 }

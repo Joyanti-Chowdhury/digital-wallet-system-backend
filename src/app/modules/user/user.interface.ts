@@ -35,4 +35,6 @@ export interface IUser {
     auths:IAuthProvider[]
     booking ?:Types.ObjectId[]
     agents ? :Types.ObjectId[]
+    agentApproved?: boolean; // for agents
+    createdAt?: Date
 }
