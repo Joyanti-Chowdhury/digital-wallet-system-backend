@@ -108,18 +108,32 @@ digital-wallet-system/
 
 ## 🧪 API Endpoints
 
-| Method | Endpoint                   | Description                    | Auth Required | Roles Allowed      |
-| ------ | -------------------------- | ------------------------------ | ------------- | ------------------ |
-| POST   | `/api/v1/auth/register`       | Register new user              | No            | -                  |
-| POST   | `/api/v1/auth/login`          | User login                     | No            | -                  |
-| GET    | `/api/v1/wallet/transactions`      | Get wallet balance             | Yes           | User, Agent, Admin |
-| POST   | `/api/v1/wallet/topUp`        | Add funds to wallet            | Yes           | User, Agent        |
-| POST   | `/api/v1/wallet/withdraw`     | Withdraw funds                 | Yes           | User, Agent        |
-| POST   | `/api/v1/wallet/transfer`     | Transfer funds to another user | Yes           | User               |
-| GET    | `/api/v1/wallet/transactions` | View transaction history       | Yes           | User, Agent, Admin |
-| GET    | `/api/v1/admin/users`         | Get all users                  | Yes           | Admin              |
+          
+auth
 
+Post : /api/v1/user/register .....For Register User
+Post : /api/v1/auth/login .....For login User
+
+Wallet
+
+Post : /api/v1/wallet/add-money.....For add-money user and admin
+Post : /api/v1/wallet/withdraw.....For withdraw user and admin
+Post : /api/v1/wallet/transfer.....For transfer user and admin
+get : /api/v1/wallet/transactions.....For view all transaction user
+get : /api/v1/wallet/view-transactions-history.....For view all transaction history user and admin
+
+patch : api/v1/wallet/block-user/id ...... for block user admin
 ---
+
+Agent
+
+Post : /api/v1/agent/add-money.....For add-money user and admin
+Post : /api/v1/agent/withdraw.....For withdraw user and admin
+patch : /api/v1/agent/approved-admin-status/id.....For admin  approved user   
+patch : /api/v1/agent/suspended-admin-status/:adminId.....For admin  suspended user   
+
+
+
 
 ## 📜 Scripts
 
