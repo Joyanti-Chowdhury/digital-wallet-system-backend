@@ -13,8 +13,6 @@ export const checkAuth =
   async (req: Request, res: Response, next: NextFunction) => {
     try {
       const accessToken = req.headers.authorization;
- 
-      // console.log(accessToken)
       if (!accessToken) {
         throw new AppError(httpStatus.BAD_REQUEST, "Access token is required");
       }
@@ -24,7 +22,6 @@ export const checkAuth =
         envVars.JWT_ACCESS_SECRET
       ) as JwtPayload;
 
-       console.log(verifiedToken)
       // console.log(verifiedToken)
 
 const isUserExist = await User.findOne({email : verifiedToken.email})
@@ -39,8 +36,22 @@ const isUserExist = await User.findOne({email : verifiedToken.email})
               throw new AppError(httpStatus.BAD_REQUEST,"User is deleted")
           }
 
-          // console.log(isUserExist)
-      if (!authRoles.includes(verifiedToken.role)) {
+
+
+      // console.log(accessToken)
+      // if(!verifiedToken){
+      //      console.log(verifiedToken)
+      //      throw new AppError(httpStatus.BAD_REQUEST,`You are not authorized to access this route ${verifiedToken}`)
+      // }
+      // if (!authRoles.includes(verifiedToken.role)) {
+      //   console.log(verifiedToken);
+      //   throw new AppError(
+      //     httpStatus.BAD_REQUEST,
+      //     "You are not authorized to access this route"
+      //   );
+      // }
+
+      if (!authRoles.includes(verifiedToken.role.toUpperCase())) {
   console.log("User role in token:", verifiedToken.role);
   throw new AppError(
     httpStatus.BAD_REQUEST,
@@ -48,15 +59,15 @@ const isUserExist = await User.findOne({email : verifiedToken.email})
   );
 }
 
-//  console.log(verifiedToken);
+
     //   todo: add user to request
-      // req.user = verifiedToken;
+      req.user = verifiedToken;
 
 
       // console.log(verifiedToken);
       next();
     } catch (error) {
-      console.log("JWT ERROR", error);
+      // console.log("JWT ERROR", error);
       next(error);
     }
   };

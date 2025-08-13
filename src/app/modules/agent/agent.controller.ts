@@ -80,7 +80,7 @@ const adminApprovedStatus  = catchAsync(
     });
   }
 );
-const driverSuspendStatus = catchAsync(
+const adminSuspendStatus = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
     const { adminId } = req.params;
     const admin = await agentServices.adminSuspendStatus(adminId);
@@ -94,9 +94,10 @@ const driverSuspendStatus = catchAsync(
 );
 
 
-export const WalletControllers = {
+export const agentControllers = {
   addMoney,
   withdraw,
   adminApprovedStatus,
-  driverSuspendStatus
+  adminSuspendStatus
+
 };

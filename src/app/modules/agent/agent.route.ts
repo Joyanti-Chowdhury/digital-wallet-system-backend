@@ -2,8 +2,8 @@ import { checkAuth } from "../../middlewares/checkAuth";
 import express from 'express';
 // import { addMoney,  } from "./agent.controller";
 import { Role } from "../user/user.interface";
-import { addMoney, withdraw } from "./agent.controller";
-import { adminApprovedStatus, adminSuspendStatus } from "./agent.service";
+import { addMoney, agentControllers, withdraw } from "./agent.controller";
+
 
 const router = express.Router();
 
@@ -13,13 +13,14 @@ router.post('/add-money',
 router.post('/withdraw', checkAuth(Role.AGENT),withdraw );
 router.patch(
   "/approved-admin-status/:adminId",
-//   checkAuth(Role.ADMIN) ,
-  adminApprovedStatus
+  checkAuth(Role.ADMIN) ,
+  agentControllers.adminApprovedStatus
 );
 router.patch(
   "/suspended-admin-status/:adminId",
-  checkAuth(Role.ADMIN),adminSuspendStatus
+  checkAuth(Role.ADMIN),agentControllers.adminSuspendStatus
 );
+
 
 
 // router.post('/transfer',transfer );
@@ -34,8 +35,5 @@ router.patch(
 // //   checkAuth(Role.ADMIN),
 //     WalletControllers.blockUser
 // );
-// router.post('/withdraw', checkAuth(['user', 'agent']), withdraw);
-// router.post('/transfer', checkAuth(['user', 'agent']), transfer);
-// router.get('/transactions', checkAuth(['user', 'agent']), getTransactions);
 
 export const agentRoutes = router;

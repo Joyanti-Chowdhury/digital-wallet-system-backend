@@ -10,7 +10,7 @@ const addMoney  = async (payload?: Partial<IAgent>,) => {
     return wallet
 }
 export const adminApprovedStatus = async (adminId: string) => {
-  const admin = await Agent.findById(adminId);
+  const admin = await Agent.findOne({user: adminId});
   const user = await User.findById(admin?.user);
   if (!admin) {
     throw new AppError(StatusCodes.NOT_FOUND, "Admin Not Found");
@@ -30,7 +30,8 @@ export const adminApprovedStatus = async (adminId: string) => {
   return admin;
 };
 export const adminSuspendStatus = async (adminId: string) => {
-  const admin = await Agent.findById(adminId);
+  const admin = await Agent.findOne({user: adminId});
+  
   const user = await User.findById(admin?.user);
   if (!admin) {
     throw new AppError(StatusCodes.NOT_FOUND, "Admin Not Found");

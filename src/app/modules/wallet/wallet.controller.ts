@@ -35,9 +35,9 @@ export  const addMoney = catchAsync (async (req: Request, res: Response) => {
 
 
  export const withdraw = async (req: Request, res: Response) => {
-  const { amount ,owner:userId} = req.body;
+  const { amount ,} = req.body;
   // console.log(amount)
-  // const userId = (req as any).user.userId;
+  const userId = (req as any).user.userId;
   // console.log(userId)
   const wallet = await Wallet.findOne({owner : userId});
   console.log(wallet)
@@ -50,9 +50,9 @@ export  const addMoney = catchAsync (async (req: Request, res: Response) => {
 
 export const transfer = async (req: Request, res: Response) => {
   const { toEmail, amount } = req.body;
-  // const fromId = (req as any).user.userId;
+  const fromId = req.user.userId;
   // console.log(req)
-  const fromId = "6898d5b670ce589350c133ad";
+  // const fromId = "6898d5b670ce589350c133ad";
 
   const toUser = await User.findOne({ email: toEmail });
   if (!toUser) return res.status(404).json({ error: 'Recipient not found' });
@@ -61,7 +61,7 @@ export const transfer = async (req: Request, res: Response) => {
 
   // console.log(fromWallet)
 
-  const toWallet = await Wallet.findOne({ owner: toUser._id })as JwtPayload ;
+  const toWallet = await Wallet.findOne({ owner: toUser._id }) as JwtPayload ;
 
   //  console.log(toWallet)
   if (!fromWallet || fromWallet.balance < amount)
