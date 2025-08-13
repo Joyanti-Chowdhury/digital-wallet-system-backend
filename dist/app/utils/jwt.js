@@ -13,7 +13,7 @@ const generateToken = (payload, secret, expiresIn) => {
 };
 exports.generateToken = generateToken;
 const verifyToken = (token, secret) => {
-    console.log(token, secret);
+    // console.log(token ,secret)
     const verifiedToken = jsonwebtoken_1.default.verify(token, secret);
     return verifiedToken;
 };

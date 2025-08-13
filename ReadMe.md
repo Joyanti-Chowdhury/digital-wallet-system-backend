@@ -110,14 +110,14 @@ digital-wallet-system/
 
 | Method | Endpoint                   | Description                    | Auth Required | Roles Allowed      |
 | ------ | -------------------------- | ------------------------------ | ------------- | ------------------ |
-| POST   | `/api/auth/register`       | Register new user              | No            | -                  |
-| POST   | `/api/auth/login`          | User login                     | No            | -                  |
-| GET    | `/api/wallet/balance`      | Get wallet balance             | Yes           | User, Agent, Admin |
-| POST   | `/api/wallet/topUp`        | Add funds to wallet            | Yes           | User, Agent        |
-| POST   | `/api/wallet/withdraw`     | Withdraw funds                 | Yes           | User, Agent        |
-| POST   | `/api/wallet/transfer`     | Transfer funds to another user | Yes           | User               |
-| GET    | `/api/wallet/transactions` | View transaction history       | Yes           | User, Agent, Admin |
-| GET    | `/api/admin/users`         | Get all users                  | Yes           | Admin              |
+| POST   | `/api/v1/auth/register`       | Register new user              | No            | -                  |
+| POST   | `/api/v1/auth/login`          | User login                     | No            | -                  |
+| GET    | `/api/v1/wallet/transactions`      | Get wallet balance             | Yes           | User, Agent, Admin |
+| POST   | `/api/v1/wallet/topUp`        | Add funds to wallet            | Yes           | User, Agent        |
+| POST   | `/api/v1/wallet/withdraw`     | Withdraw funds                 | Yes           | User, Agent        |
+| POST   | `/api/v1/wallet/transfer`     | Transfer funds to another user | Yes           | User               |
+| GET    | `/api/v1/wallet/transactions` | View transaction history       | Yes           | User, Agent, Admin |
+| GET    | `/api/v1/admin/users`         | Get all users                  | Yes           | Admin              |
 
 ---
 
@@ -150,7 +150,7 @@ digital-wallet-system/
 * JWT is used for secure stateless authentication.
 * Role-based middleware ensures restricted access to sensitive routes.
 
-liveelinK: https://digital-wallet-system-backend-kappa.vercel.app
+live linK: https://digital-wallet-system-backend-kappa.vercel.app
 
 
 

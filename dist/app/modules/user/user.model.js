@@ -34,6 +34,10 @@ const userSchema = new mongoose_1.Schema({
         enum: Object.values(user_interface_1.Role),
         default: user_interface_1.Role.USER,
     },
+    balance: {
+        type: Number,
+        default: 50
+    },
     phone: {
         type: String,
         required: false
@@ -56,6 +60,16 @@ const userSchema = new mongoose_1.Schema({
     isVerified: {
         type: Boolean,
         default: false
+    },
+    agents: {
+        type: String
+    },
+    agentApproved: {
+        type: Boolean,
+    },
+    createdAt: {
+        type: Date,
+        default: Date.now
     },
     auths: [authProviderSchema],
 }, {

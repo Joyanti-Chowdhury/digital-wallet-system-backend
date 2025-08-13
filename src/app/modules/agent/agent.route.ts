@@ -8,9 +8,9 @@ import { addMoney, agentControllers, withdraw } from "./agent.controller";
 const router = express.Router();
 
 router.post('/add-money',
-     checkAuth(Role.AGENT),
+     checkAuth(Role.AGENT,Role.ADMIN),
       addMoney);
-router.post('/withdraw', checkAuth(Role.AGENT),withdraw );
+router.post('/withdraw', checkAuth(Role.AGENT,Role.ADMIN),withdraw );
 router.patch(
   "/approved-admin-status/:adminId",
   checkAuth(Role.ADMIN) ,

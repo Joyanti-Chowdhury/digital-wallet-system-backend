@@ -12,4 +12,5 @@ var isActive;
     isActive["ACTIVE"] = "ACTIVE";
     isActive["INACTIVE"] = "INACTIVE";
     isActive["BLOCKED"] = "BLOCKED";
+    isActive["DELETED"] = "DELETED";
 })(isActive || (exports.isActive = isActive = {}));

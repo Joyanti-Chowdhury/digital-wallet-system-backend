@@ -7,13 +7,13 @@ import { Role } from '../user/user.interface';
 
 const router = express.Router();
 
-router.post('/add-money',checkAuth(Role.USER), addMoney);
-router.post('/withdraw', checkAuth(Role.USER),withdraw );
-router.post('/transfer',checkAuth(Role.USER),transfer );
-router.get('/transactions', getTransactions );
+router.post('/add-money',checkAuth(Role.USER,Role.ADMIN), addMoney);
+router.post('/withdraw', checkAuth(Role.USER,Role.ADMIN),withdraw );
+router.post('/transfer',checkAuth(Role.USER,Role.ADMIN),transfer );
+router.get('/transactions',checkAuth(Role.USER,Role.ADMIN), getTransactions );
 router.get(
   "/view-transactions-history",
-  checkAuth(Role.USER),
+  checkAuth(Role.USER,Role.ADMIN),
   WalletControllers.viewTransactions
 );
 router.patch(

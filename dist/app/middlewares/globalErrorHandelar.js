@@ -7,6 +7,7 @@ exports.globalErrorHandler = void 0;
 const env_1 = require("../config/env");
 const appError_1 = __importDefault(require("../errorHelpers/appError"));
 const globalErrorHandler = (err, req, res, next) => {
+    console.log(err);
     let statusCode = err.statusCode || 500;
     let message = `something went wrong!!!`;
     if (err instanceof appError_1.default) {

@@ -27,6 +27,7 @@ const checkAuth = (...authRoles) => (req, res, next) => __awaiter(void 0, void 0
             throw new appError_1.default(http_status_codes_1.default.BAD_REQUEST, "Access token is required");
         }
         const verifiedToken = (0, jwt_1.verifyToken)(accessToken, env_1.envVars.JWT_ACCESS_SECRET);
+        // console.log(verifiedToken)
         const isUserExist = yield user_model_1.User.findOne({ email: verifiedToken.email });
         if (!isUserExist) {
             throw new appError_1.default(http_status_codes_1.default.BAD_REQUEST, "User dose not exist");
@@ -42,11 +43,19 @@ const checkAuth = (...authRoles) => (req, res, next) => __awaiter(void 0, void 0
         //      console.log(verifiedToken)
         //      throw new AppError(httpStatus.BAD_REQUEST,`You are not authorized to access this route ${verifiedToken}`)
         // }
-        if (!authRoles.includes(verifiedToken.role)) {
+        // if (!authRoles.includes(verifiedToken.role)) {
+        //   console.log(verifiedToken);
+        //   throw new AppError(
+        //     httpStatus.BAD_REQUEST,
+        //     "You are not authorized to access this route"
+        //   );
+        // }
+        if (!authRoles.includes(verifiedToken.role.toUpperCase())) {
+            console.log("User role in token:", verifiedToken.role);
             throw new appError_1.default(http_status_codes_1.default.BAD_REQUEST, "You are not authorized to access this route");
         }
         //   todo: add user to request
-        //   req.user = verifiedToken;
+        req.user = verifiedToken;
         // console.log(verifiedToken);
         next();
     }
