@@ -5,6 +5,8 @@ import { envVars } from "../config/env"
 import AppError from "../errorHelpers/appError"
 
  export const globalErrorHandler = (err: any, req: Request, res: Response ,next: NextFunction) => {
+
+    console.log(err)
   let statusCode = err.statusCode || 500
    let message =  `something went wrong!!!`
  
@@ -16,6 +18,7 @@ else if(err instanceof Error){
    statusCode = 500
    message = err.message
 }
+
 
     res.status(statusCode).json({
         success: false,

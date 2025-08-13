@@ -50,7 +50,8 @@ export  const addMoney = catchAsync (async (req: Request, res: Response) => {
 
 export const transfer = async (req: Request, res: Response) => {
   const { toEmail, amount } = req.body;
-  // const fromId = (req as any).userId;
+  // const fromId = (req as any).user.userId;
+  // console.log(req)
   const fromId = "6898d5b670ce589350c133ad";
 
   const toUser = await User.findOne({ email: toEmail });
@@ -62,7 +63,7 @@ export const transfer = async (req: Request, res: Response) => {
 
   const toWallet = await Wallet.findOne({ owner: toUser._id })as JwtPayload ;
 
-   console.log(toWallet)
+  //  console.log(toWallet)
   if (!fromWallet || fromWallet.balance < amount)
     
   //  throw new AppError(StatusCodes.NOT_FOUND,"Transaction History Not Found")
@@ -127,3 +128,6 @@ export const WalletControllers = {
    getTransactions,
    blockUser
 }
+
+
+// mehediimun.ph@gmail.com

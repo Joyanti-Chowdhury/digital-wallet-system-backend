@@ -70,12 +70,13 @@ export const withdraw  = catchAsync(
 const adminApprovedStatus  = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
     const { adminId } = req.params;
-    const driver = await agentServices.adminApprovedStatus(adminId);
+    console.log(adminId)
+    const admin = await agentServices.adminApprovedStatus(adminId);
     sendResponse(res, {
       success: true,
       statusCode: StatusCodes.CREATED,
       message: "Admin Status Approved successfully",
-      data: driver,
+      data: admin,
     });
   }
 );
