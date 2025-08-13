@@ -38,6 +38,10 @@ const userSchema = new Schema<IUser>({
         default: Role.USER,
     
     },
+    balance:{
+        type: Number,
+        default: 50
+    },
     phone: {
         type: String,
         required: false

@@ -16,12 +16,12 @@ export type TxType = 'topup' | 'withdraw' | 'transfer' | 'cash_in' | 'cash_out' 
 export type TxStatus = 'pending' | 'completed' | 'failed' | 'reversed';
 
 export interface ITransaction extends Document {
-  type: TxType;
+  type: string;
   amount: number;
   fee: number;             // fee amount
   from?: Types.ObjectId;   // optional: wallet/user who sent (could be agent)
   to?: Types.ObjectId;     // optional: recipient wallet/user
-  initiatedBy: Types.ObjectId; // user/agent/admin who initiated
+  initiatedBy?: Types.ObjectId; // user/agent/admin who initiated
   status: TxStatus;
   meta?: any;
   createdAt: Date;

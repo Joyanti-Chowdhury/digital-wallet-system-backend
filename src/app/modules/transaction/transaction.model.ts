@@ -18,7 +18,7 @@ const TransactionSchema: Schema = new Schema({
   fee: { type: Number, default: 0 },
   from: { type: Schema.Types.ObjectId, ref: 'User' },
   to: { type: Schema.Types.ObjectId, ref: 'User' },
-  initiatedBy: { type: Schema.Types.ObjectId, ref: 'User', required: true },
+  initiatedBy: { type: Schema.Types.ObjectId, ref: 'User' },
   status: { type: String, default: 'pending' },
   meta: { type: Schema.Types.Mixed },
 }, { timestamps: true });

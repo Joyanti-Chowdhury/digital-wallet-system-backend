@@ -1,15 +1,22 @@
 
 import { IWallet } from "./wallet.interface"
-import walletModel from "./wallet.model"
+import { Wallet } from "./wallet.model"
+
 
 const addMoney  = async (payload : Partial<IWallet  >) => {
-    const wallet = await walletModel.create(payload)
+    const wallet = await Wallet.create(payload)
     return wallet
 }
 
 
+// const withdrawMoney = async ( Partial<IWallet>) => {
+//     const wallet = await Wallet.findOne({owner : userId})
+//     return wallet
+// }
+
 
 
 export  const WalletServices = {
-    addMoney
+    addMoney,
+ 
 }

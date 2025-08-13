@@ -15,12 +15,15 @@ interface EnvConfig {
   JWT_REFRESH_EXPIRES: string;
   ADMIN_EMAIL: string;
   ADMIN_PASSWORD: string;
+
   // GOOGLE_CLIENT_SECRET: string;
   // GOOGLE_CLIENT_ID: string;
   // GOOGLE_CALLBACK_URL: string;
   // EXPRESS_SESSION_SECRET: string;
   // FRONTEND_URL: string;
 
+  INITIAL_BALANCE: string;
+  TRANSACTION_FEE_PERCENT:  string;
 }
 
 const loadEnvVariable = (): EnvConfig => {
@@ -39,7 +42,9 @@ const loadEnvVariable = (): EnvConfig => {
     // "GOOGLE_CLIENT_ID",
     // "GOOGLE_CALLBACK_URL",
     // "EXPRESS_SESSION_SECRET",
-    // "FRONTEND_URL"
+    // "FRONTEND_URL",
+    "INITIAL_BALANCE",
+    "TRANSACTION_FEE_PERCENT"
   ];
   requiredEnvVariable.forEach((key) => {
     if (!process.env[key]) {
@@ -61,7 +66,10 @@ const loadEnvVariable = (): EnvConfig => {
     // GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID as string,
     // GOOGLE_CALLBACK_URL: process.env.GOOGLE_CALLBACK_URL as string,
     // EXPRESS_SESSION_SECRET: process.env.EXPRESS_SESSION_SECRET as string,
-    // FRONTEND_URL: process.env.FRONTEND_URL as string
+    // FRONTEND_URL: process.env.FRONTEND_URL as string,
+
+    INITIAL_BALANCE: process.env.INITIAL_BALANCE as string,
+    TRANSACTION_FEE_PERCENT: process.env.TRANSACTION_FEE_PERCENT as string
 
   };
 };

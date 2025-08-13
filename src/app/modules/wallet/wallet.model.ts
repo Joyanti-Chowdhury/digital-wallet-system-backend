@@ -1,5 +1,6 @@
 import { model, Schema } from "mongoose";
 import { IWallet } from "./wallet.interface";
+import {envVars}  from "../../config/env";
 
 // const WalletSchema = new Schema({
 //   userId: { type: Schema.Types.ObjectId, ref: 'User', required: true },
@@ -8,6 +9,7 @@ import { IWallet } from "./wallet.interface";
 
 
 // import mongoose, {Schema, Document, Types} from 'mongoose';
+
 
 // export interface IWallet extends Document {
 //   owner: Types.ObjectId; // references User
@@ -18,7 +20,7 @@ import { IWallet } from "./wallet.interface";
 
 const WalletSchema: Schema = new Schema({
   owner: { type: Schema.Types.ObjectId, ref: 'User', required: true, unique: true },
-  balance: { type: Number, default: parseFloat(process.env.INITIAL_BALANCE || '50') },
+  balance: { type: Number, default: parseFloat(envVars.INITIAL_BALANCE || "50") },
   blocked: { type: Boolean, default: false },
 }, { timestamps: true });
 
@@ -27,4 +29,6 @@ const WalletSchema: Schema = new Schema({
 
 
 
-export default model<IWallet>('Wallet', WalletSchema);
+// export default model<IWallet>('Wallet', WalletSchema);
+
+export const Wallet = model<IWallet>('Wallet', WalletSchema);

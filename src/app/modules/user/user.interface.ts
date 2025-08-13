@@ -15,7 +15,8 @@ export interface  IAuthProvider {
 export enum isActive {
     ACTIVE = "ACTIVE",
     INACTIVE = "INACTIVE",
-    BLOCKED = "BLOCKED"
+    BLOCKED = "BLOCKED",
+    DELETED = "DELETED"
 }
 
 
@@ -32,6 +33,7 @@ export interface IUser {
     isActive?: isActive;
     isVerified?: boolean;
     role?: Role;
+    balance:number;
     auths:IAuthProvider[]
     booking ?:Types.ObjectId[]
     agents ? :Types.ObjectId[]

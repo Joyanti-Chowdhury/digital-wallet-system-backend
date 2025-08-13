@@ -23,6 +23,7 @@ export const checkAuth =
         envVars.JWT_ACCESS_SECRET
       ) as JwtPayload;
 
+      // console.log(verifiedToken)
 
 const isUserExist = await User.findOne({email : verifiedToken.email})
 
@@ -43,12 +44,22 @@ const isUserExist = await User.findOne({email : verifiedToken.email})
       //      console.log(verifiedToken)
       //      throw new AppError(httpStatus.BAD_REQUEST,`You are not authorized to access this route ${verifiedToken}`)
       // }
-      if (!authRoles.includes(verifiedToken.role)) {
-        throw new AppError(
-          httpStatus.BAD_REQUEST,
-          "You are not authorized to access this route"
-        );
-      }
+      // if (!authRoles.includes(verifiedToken.role)) {
+      //   console.log(verifiedToken);
+      //   throw new AppError(
+      //     httpStatus.BAD_REQUEST,
+      //     "You are not authorized to access this route"
+      //   );
+      // }
+
+      if (!authRoles.includes(verifiedToken.role.toUpperCase())) {
+  console.log("User role in token:", verifiedToken.role);
+  throw new AppError(
+    httpStatus.BAD_REQUEST,
+    "You are not authorized to access this route"
+  );
+}
+
 
     //   todo: add user to request
     //   req.user = verifiedToken;
